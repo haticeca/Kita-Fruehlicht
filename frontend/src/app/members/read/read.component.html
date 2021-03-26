@@ -1,0 +1,120 @@
+<div class="container d-flex flex-column sticky-footer-wrapper min-vh-100 m-5">
+  <div class="table-responsive" *ngIf="selectedId == 0">
+    <h6>Aktuelle Warteliste</h6>
+    <table class="table table-hover table-sm">
+      <caption>Warteliste der Kinder</caption>
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Vorname des Kindes</th>
+        <th>Nachname des Kindes</th>
+        <th>Geburtsdatum</th>
+        <th>Geschlecht</th>
+        <th>Wunschtermin</th>
+        <th>Geschwisterkind</th>
+        <th>Vorname des Elternteils</th>
+        <th>Nachname des Elternteils</th>
+        <th>Adresse</th>
+        <th>Hausnummer</th>
+        <th>Postleitzahl</th>
+        <th>Ort</th>
+        <th>E-mail</th>
+        <th>Telefon</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let member of members | slice: (page-1) * pageSize : page * pageSize; let i=index; trackBy: trackByData">
+        <td>{{ i+1 }}</td>
+        <td>{{member.firstname}}</td>
+        <td>{{member.lastname}}</td>
+        <td>{{member.birthday}}</td>
+        <td>{{member.geschlecht}}</td>
+        <td>{{member.wunschtermin}}</td>
+        <td>{{member.geschwisterkind}}</td>
+        <td>{{member.parentFirstName}}</td>
+        <td>{{member.parentLastName}}</td>
+        <td>{{member.adres}}</td>
+        <td>{{member.houseNumber}}</td>
+        <td>{{member.plz}}</td>
+        <td>{{member.ort}}</td>
+        <td>{{member.email}}</td>
+        <td>{{member.telefon}}</td>
+        <td><a [routerLink]="['/read/', member.id]">
+          <i-bs
+            name="pencil-square"
+            class="text-secondary"
+            width="1em"
+            height="1em">
+          </i-bs></a></td>
+        <td><i-bs
+        name="trash"
+        class="text-secondary"
+        width="1em"
+        height="1em"
+        (click)="open(content, member.id)">
+      </i-bs></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="selectedId > 0" class="container">
+    <p><a [routerLink]="['/read']">Zurück</a></p>
+    <h1>{{ selectedId }}</h1>
+    <div *ngIf="error">
+      <p>{{ error?.message }}</p>
+      <p>{{ error?.status }}</p>
+    </div>
+    <div *ngIf="member">
+      <p>{{ member?.id }}</p>
+      <p>{{ member?.firstname }}</p>
+      <p>{{ member?.lastname }}</p>
+      <p>{{ member?.email }}</p>
+      <app-form></app-form>
+    </div>
+  </div>
+  <ngb-pagination class="d-flex justify-content-end"
+                  [(page)]="page"
+                  [pageSize]="pageSize"
+                  [collectionSize]="members.length">
+  </ngb-pagination>
+</div>
+
+<!-- modaler Dialog fuer das Loeschen -->
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Confirm delete</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('cancel')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h4 style="color: yellow">Möchten Sie folgendes Kind aus der Warteliste löschen?</h4>
+    <form [formGroup]="form">
+      <div class="form-group">
+        <label for="inpId">id</label>
+        <div class="input-group">
+          <input id="inpId" class="form-control" formControlName="idControl" value="{{ member?.id }}" readonly>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inpFN">firstname</label>
+        <div class="input-group">
+          <input id="inpFN" class="form-control" formControlName="firstNameControl" value="{{ member?.firstname }}" readonly>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inpLN">lastname</label>
+        <div class="input-group">
+          <input id="inpLN" class="form-control" formControlName="lastNameControl" value="{{ member?.lastname }}" readonly>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.close('cancel')">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="modal.close('delete')">Delete</button>
+  </div>
+</ng-template>
