@@ -36,6 +36,7 @@ export class ReadComponent implements OnInit {
         idControl: ['', Validators.required],
         firstNameControl: ['', Validators.required],
         lastNameControl: ['', Validators.required],
+        birthdayControl: ['', Validators.required],
         emailControl: ['', Validators.required],
       }
     );

@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CreateComponent } from './members/create/create.component';
-import { UpdateComponent } from './members/update/update.component';
 import { ReadComponent } from './members/read/read.component';
-import { DeleteComponent } from './members/delete/delete.component';
+import {CreateMemberComponent} from "./create-member/create-member.component";
+import {RegisterMemberComponent} from "./register-member/register-member.component";
+import {FormComponent} from "./members/read/form/form.component";
+import {HomeComponent} from "./home/home.component";
 
 
 const routes: Routes = [
-  { path: 'create', component: CreateComponent },
-  { path: 'update', component: UpdateComponent },
-  { path: 'update/:id', component: UpdateComponent },
+  { path: 'form/:id', component: FormComponent },
   { path: 'read', component: ReadComponent },
   { path: 'read/:id', component: ReadComponent },
-  { path: 'delete', component: DeleteComponent },
-  { path: 'delete/:id', component: DeleteComponent },
+  { path: 'create-member', component: CreateMemberComponent },
+  { path: 'register-member', component: RegisterMemberComponent },
+  { path: 'home', component: HomeComponent }
 ];
 
 @NgModule({

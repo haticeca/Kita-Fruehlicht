@@ -2,16 +2,16 @@ export interface Member {
   id: number;
   firstname: string;
   lastname: string;
-  birthday: Date;
+  birthday: any;
   geschlecht: string;
-  wunschtermin: Date;
+  wunschtermin: any;
   geschwisterkind: string;
   parentFirstName: string;
   parentLastName: string;
   adres: string;
   houseNumber: string;
   plz: number;
-  ort: string,
+  ort: string;
   email: string;
-  telefon: string;
+  telefon: number;
 }

@@ -30,6 +30,17 @@ export class MemberService {
         }
       );
   }
+  create(data: Member): void {
+    this.http.post<Member>(this.baseUrl, data)
+      .subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
   deleteOne(memberId: number): void {
     this.http.delete<Member>(this.baseUrl + '/' + memberId)
       .subscribe(

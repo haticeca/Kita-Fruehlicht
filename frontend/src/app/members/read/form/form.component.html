@@ -1,38 +1,71 @@
-<form [formGroup]="form">
-  <div class="form-group row">
-    <label for="staticId" class="col-sm-2 col-form-label">id</label>
-    <div class="col-sm-10">
-      <input type="number" class="form-control" formControlName="idControl" id="staticId" readonly>
+<div class="container">
+  <form class="row" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group row col-12">
+      <label for="firstname" class="form-label">Name des Kindes<span style="color:darkred">*</span></label>
+      <input type="text" class="form-control" id="firstname" formControlName="firstNameControl"  value="{{ member?.firstname }}">
     </div>
-  </div>
+    <div class="form-group row col-12 col-sm-12">
+      <input type="text" class="form-control" formControlName="lastNameControl" value="{{ member?.lastname }}">
+    </div>
+    <div class="form-group row col-12 col-sm-12">
+      <label for="birthday" class="form-label">Geburtsdatum<small> (z.B. 16.03.2021, falls noch nicht geboren, vorauss. Geburtsdatum)</small><span style="color:darkred">*</span></label>
+      <input type="text" class="form-control" id="birthday" formControlName="birthdayControl" value="{{ member?.birthday }}">
+    </div>
+    <div class="form-group row col-12">
+      <label for="geschlecht" class="form-label">Geschlecht<span style="color:darkred">*</span></label>
+      <select id="geschlecht" formControlName="geschlechtControl" class="form-select custom-select mr-sm-2">
+        <option selected>{{ member?.geschlecht }}</option>
+        <option>mädchen</option>
+        <option>junge</option>
+      </select>
+    </div>
+    <div class="form-group row col-12">
+      <label for="wunschtermin" class="form-label">Wunschtermin Aufnahme<small> (z.B. 16.03.2021)</small><span style="color:darkred">*</span></label>
+      <input type="text" class="form-control" id="wunschtermin" formControlName="wunschterminControl" value="{{ member?.wunschtermin }}">
+    </div>
+    <div class="form-group row col-12">
+      <label for="geschwisterkind" class="form-label">Geschwisterkind bereits in Einrichtung <span style="color:darkred">*</span></label>
+      <select id="geschwisterkind" formControlName="geschwisterkindControl" class="form-select custom-select mr-sm-2">
+        <option selected>{{ member?.geschwisterkind }}</option>
+        <option>ja</option>
+        <option>nein</option>
+      </select>
+    </div>
+    <div class="form-group row col-12">
+      <label for="parentFirstName" class="form-label">Elternteil<span style="color:darkred">*</span></label>
+      <input type="text" class="form-control" id="parentFirstName" formControlName="parentFirstNameControl" value="{{ member?.parentFirstName}}">
+    </div>
+    <div class="form-group row col-12">
+      <input type="text" class="form-control" id="parentLastName" formControlName="parentLastNameControl" value="{{ member?.parentLastName }}">
+    </div>
+    <div class="form-group row col-9">
+      <input type="text" class="form-control" id="adres" formControlName="adresControl" value="{{ member?.adres }}">
+    </div>
+    <div class="form-group col-3">
+      <input type="text" class="form-control" id="houseNumber" formControlName="houseNumberControl" value="{{ member?.houseNumber}}">
+    </div>
+    <div class="form-group row col-6">
+      <input type="text" class="form-control" id="plz" formControlName="plzControl" value="{{ member?.plz}}">
+    </div>
+    <div class="form-group col-6">
+      <input type="text" class="form-control" id="ort" formControlName="ortControl" value="{{ member?.ort}}">
+    </div>
+    <div class="form-group row col-md-6">
+      <input type="text" class="form-control" id="email" formControlName="emailControl" value="{{ member?.email }}">
+    </div>
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" id="telefon" formControlName="telefonControl" value="{{ member?.telefon}}">
+    </div>
+    <div class="form-group row col-12">
+      <div class="col-sm-6">
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="!form.valid">Update</button>
+      </div>
+      <div class="col-sm-6">
+        <button type="cancel" class="btn btn-secondary btn-block">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>
 
-  <div class="form-group row">
-    <label for="inputFirstName" class="col-sm-2 col-form-label">First Name</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" formControlName="firstNameControl" id="inputFirstName">
-    </div>
-  </div>
 
-  <div class="form-group row">
-    <label for="inputLastName" class="col-sm-2 col-form-label">Last Name</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" formControlName="lastNameControl" id="inputLastName">
-    </div>
-  </div>
 
-  <div class="form-group row">
-    <label for="inputEmail" class="col-sm-2 col-form-label">E-Mail</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" formControlName="emailControl" id="inputEmail">
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <div class="col-sm-6">
-      <button type="submit" class="btn btn-primary btn-block" [disabled]="!form.valid">Update</button>
-    </div>
-    <div class="col-sm-6">
-      <button type="cancel" class="btn btn-secondary btn-block">Cancel</button>
-    </div>
-  </div>
-</form>

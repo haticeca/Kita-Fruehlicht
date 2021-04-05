@@ -4,10 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CreateComponent } from './members/create/create.component';
 import { ReadComponent } from './members/read/read.component';
-import { UpdateComponent } from './members/update/update.component';
-import { DeleteComponent } from './members/delete/delete.component';
 import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 import { pencilSquare } from 'ngx-bootstrap-icons';
 import { trash } from 'ngx-bootstrap-icons';
@@ -18,6 +15,10 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { CreateMemberComponent } from './create-member/create-member.component';
 import { RegisterMemberComponent } from './register-member/register-member.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ImpressumComponent } from './impressum/impressum.component';
+import { KontaktComponent } from './kontakt/kontakt.component';
+import { HomeComponent } from './home/home.component';
 
 const icons = {
   pencilSquare,
@@ -27,15 +28,15 @@ const icons = {
 @NgModule({
   declarations: [
     AppComponent,
-    CreateComponent,
     ReadComponent,
-    UpdateComponent,
-    DeleteComponent,
     FormComponent,
     FooterComponent,
     HeaderComponent,
     CreateMemberComponent,
-    RegisterMemberComponent
+    RegisterMemberComponent,
+    ImpressumComponent,
+    KontaktComponent,
+    HomeComponent
   ],
     imports: [
         BrowserModule,
@@ -43,7 +44,8 @@ const icons = {
         HttpClientModule,
         NgxBootstrapIconsModule.pick(icons),
         ReactiveFormsModule,
-        NgbModule
+        NgbModule,
+        BrowserAnimationsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

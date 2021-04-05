@@ -13,7 +13,18 @@ exports.create = (req, res) => {
     const member = new Member({
         firstname: req.body.firstname,
         lastname: req.body.lastname,
-        email: req.body.email
+        birthday: new Date(req.body.birthday),
+        geschlecht: req.body.geschlecht,
+        wunschtermin: new Date(req.body.wunschtermin),
+        geschwisterkind: req.body.geschwisterkind,
+        parentFirstName: req.body.parentFirstName,
+        parentLastName: req.body.parentLastName,
+        adres: req.body.adres,
+        houseNumber: req.body.houseNumber,
+        plz: req.body.plz,
+        ort: req.body.ort,
+        email: req.body.email,
+        telefon: req.body.telefon
     });
 
     // Save Customer in the database
