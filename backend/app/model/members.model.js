@@ -66,7 +66,7 @@ Member.getAll = result => {
 Member.updateById = (id, member, result) => {
     sql.query(
         "UPDATE members SET firstname = ?, lastname = ?, birthday = ?, geschlecht = ?, wunschtermin = ?, geschwisterkind = ?, parentFirstName = ?, parentLastName = ?, adres = ?, houseNumber = ?, plz = ?, ort = ?, email = ?, telefon = ? WHERE id = ?",
-        [member.firstname, member.lastname, member.birthday, member.geschlecht, member.wunschtermin, member.geschwisterkind, member.parentFirstName, member.parentLastName, member.adres, member.houseNumber, member.plz, member.ort, member.email, member.telefon, id],
+        [member.firstname, member.lastname, member.birthday, member.geschlecht, member.wunschtermin, member.geschwisterkind, member.parentFirstName, member.parentLastName, member.adres, member.houseNumber, member.ort, member.plz, member.email, member.telefon, id],
         (err, res) => {
             if (err) {
                 console.log("error: ", err);

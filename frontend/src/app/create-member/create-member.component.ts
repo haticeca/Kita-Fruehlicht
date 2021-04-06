@@ -12,6 +12,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class CreateMemberComponent implements OnInit {
   form: FormGroup;
   member: Member;
+  alert: boolean;
+
 
   constructor(
     private mS: MemberService,
@@ -43,6 +45,7 @@ export class CreateMemberComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.alert = false;
   }
   onSubmit(): void {
     console.warn(this.form.value);
@@ -52,6 +55,7 @@ export class CreateMemberComponent implements OnInit {
     this.member.birthday = values.birthdayControl;
     this.member.geschlecht = values.geschlechtControl;
     this.member.wunschtermin = values.wunschterminControl;
+    this.member.geschwisterkind = values.geschwisterkindControl;
     this.member.parentFirstName = values.parentFirstNameControl;
     this.member.parentLastName = values.parentLastNameControl;
     this.member.adres = values.adresControl;
@@ -62,6 +66,11 @@ export class CreateMemberComponent implements OnInit {
     this.member.email = values.emailControl;
     console.log('created: ' + this.member);
     this.mS.create(this.member);
-    this.router.navigate(['/read']);
+    this.form.reset();
+    this.alert = true;
+  }
+
+  closeAlert(): void {
+    this.alert = false;
   }
 }

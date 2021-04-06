@@ -1,5 +1,8 @@
 .btn{
   background-color: #61CE70;
   border-color:  #61CE70;
-
+}
+input.ng-touched.ng-invalid {
+  border: 1px solid red;
+  color: red;
 }

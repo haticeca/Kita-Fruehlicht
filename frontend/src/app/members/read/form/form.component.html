@@ -1,5 +1,10 @@
 <div class="container">
+  <a [routerLink]="['/read']">Zurück zur Warteliste</a>
   <form class="row" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group row col-4">
+      <label for="id" class="form-label">id</label>
+        <input type="number" class="form-control" formControlName="idControl" id="id" value="{{ member?.id }}" readonly>
+    </div>
     <div class="form-group row col-12">
       <label for="firstname" class="form-label">Name des Kindes<span style="color:darkred">*</span></label>
       <input type="text" class="form-control" id="firstname" formControlName="firstNameControl"  value="{{ member?.firstname }}">
@@ -8,8 +13,8 @@
       <input type="text" class="form-control" formControlName="lastNameControl" value="{{ member?.lastname }}">
     </div>
     <div class="form-group row col-12 col-sm-12">
-      <label for="birthday" class="form-label">Geburtsdatum<small> (z.B. 16.03.2021, falls noch nicht geboren, vorauss. Geburtsdatum)</small><span style="color:darkred">*</span></label>
-      <input type="text" class="form-control" id="birthday" formControlName="birthdayControl" value="{{ member?.birthday }}">
+      <label for="birthday" class="form-label">Geburtsdatum<small> (z.B. 06-05-2019, falls noch nicht geboren, vorauss. Geburtsdatum)</small><span style="color:darkred">*</span></label>
+      <input type="text" class="form-control" id="birthday" formControlName="birthdayControl" value="{{member.birthday | date:'shortDate'}}">
     </div>
     <div class="form-group row col-12">
       <label for="geschlecht" class="form-label">Geschlecht<span style="color:darkred">*</span></label>
@@ -20,12 +25,12 @@
       </select>
     </div>
     <div class="form-group row col-12">
-      <label for="wunschtermin" class="form-label">Wunschtermin Aufnahme<small> (z.B. 16.03.2021)</small><span style="color:darkred">*</span></label>
-      <input type="text" class="form-control" id="wunschtermin" formControlName="wunschterminControl" value="{{ member?.wunschtermin }}">
+      <label for="wunschtermin" class="form-label">Wunschtermin Aufnahme<small> (z.B. 2021-03-17)</small><span style="color:darkred">*</span></label>
+      <input type="text" class="form-control" id="wunschtermin" formControlName="wunschterminControl" value="{{member?.wunschtermin | date:'shortDate'}}">
     </div>
     <div class="form-group row col-12">
       <label for="geschwisterkind" class="form-label">Geschwisterkind bereits in Einrichtung <span style="color:darkred">*</span></label>
-      <select id="geschwisterkind" formControlName="geschwisterkindControl" class="form-select custom-select mr-sm-2">
+      <select type="number" id="geschwisterkind" formControlName="geschwisterkindControl" class="form-select custom-select mr-sm-2">
         <option selected>{{ member?.geschwisterkind }}</option>
         <option>ja</option>
         <option>nein</option>
@@ -45,7 +50,7 @@
       <input type="text" class="form-control" id="houseNumber" formControlName="houseNumberControl" value="{{ member?.houseNumber}}">
     </div>
     <div class="form-group row col-6">
-      <input type="text" class="form-control" id="plz" formControlName="plzControl" value="{{ member?.plz}}">
+      <input type="number" class="form-control" id="plz" formControlName="plzControl" value="{{ member?.plz}}">
     </div>
     <div class="form-group col-6">
       <input type="text" class="form-control" id="ort" formControlName="ortControl" value="{{ member?.ort}}">
@@ -54,11 +59,11 @@
       <input type="text" class="form-control" id="email" formControlName="emailControl" value="{{ member?.email }}">
     </div>
     <div class="form-group col-md-6">
-      <input type="text" class="form-control" id="telefon" formControlName="telefonControl" value="{{ member?.telefon}}">
+      <input type="number" class="form-control" id="telefon" formControlName="telefonControl" value="{{ member?.telefon}}">
     </div>
     <div class="form-group row col-12">
       <div class="col-sm-6">
-        <button type="submit" class="btn btn-primary btn-block" [disabled]="!form.valid">Update</button>
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="!form.touched">Update</button>
       </div>
       <div class="col-sm-6">
         <button type="cancel" class="btn btn-secondary btn-block">Cancel</button>

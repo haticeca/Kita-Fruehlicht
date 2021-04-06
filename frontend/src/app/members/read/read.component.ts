@@ -51,6 +51,7 @@ export class ReadComponent implements OnInit {
       console.log('id = ' + this.selectedId);
       this.readOne(this.selectedId);
     }
+    this.readAll();
   }
 
   trackByData(index: number, data: Member): number {

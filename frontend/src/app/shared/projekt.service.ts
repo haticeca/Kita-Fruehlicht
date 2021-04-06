@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Observable} from "rxjs";
-import {Member} from "./Member";
+import {Projekt} from "./Projekt";
 
 @Injectable({
   providedIn: 'root'
 })
-export class MemberService {
-  baseUrl = 'http://localhost:3000/members';
+export class ProjektService {
+  baseUrl = 'http://localhost:3000/projekte';
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Member[]>{
-    return this.http.get<Member[]>(this.baseUrl);
+  getAll(): Observable<Projekt[]>{
+    return this.http.get<Projekt[]>(this.baseUrl);
   }
-  getDataById(memberId: number): Observable<Member> {
+  getDataById(projektId: number): Observable<Projekt> {
     return this.http
-      .get<Member>(this.baseUrl + '/' + memberId);
+      .get<Projekt>(this.baseUrl + '/' + projektId);
   }
-  update(dataId: number, data: Member): void {
-    this.http.put<Member>(this.baseUrl + '/' + dataId, data)
+  update(dataId: number, data: Projekt): void {
+    this.http.put<Projekt>(this.baseUrl + '/' + dataId, data)
       .subscribe(
         response => {
           console.log(response);
@@ -30,8 +30,8 @@ export class MemberService {
         }
       );
   }
-  create(data: Member): void {
-    this.http.post<Member>(this.baseUrl, data)
+  create(data: Projekt): void {
+    this.http.post<Projekt>(this.baseUrl, data)
       .subscribe(
         response => {
           console.log(response);
@@ -41,8 +41,8 @@ export class MemberService {
         }
       );
   }
-  deleteOne(memberId: number): void {
-    this.http.delete<Member>(this.baseUrl + '/' + memberId)
+  deleteOne(projektId: number): void {
+    this.http.delete<Projekt>(this.baseUrl + '/' + projektId)
       .subscribe(
         response => {
           console.log(response);

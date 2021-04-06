@@ -19,6 +19,7 @@ app.get("/", (req, res) => {
 });
 
 require("./app/routes/members.routes.js")(app);
+require("./app/routes/projekte.routes.js")(app);
 
 // set port, listen for requests
 app.listen(3000, () => {

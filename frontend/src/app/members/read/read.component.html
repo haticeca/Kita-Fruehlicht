@@ -1,8 +1,8 @@
 <div class="container d-flex flex-column sticky-footer-wrapper min-vh-100 m-5">
   <div class="table-responsive" *ngIf="selectedId == 0">
-    <h3>Warteliste</h3>
+    <h2>Bearbeitung der Online-Warteliste</h2>
     <table class="table table-hover table-sm">
-      <caption>Warteliste der Kinder</caption>
+      <caption>Warteliste</caption>
       <thead>
       <tr>
         <th>Id</th>
@@ -26,12 +26,12 @@
       </thead>
       <tbody>
       <tr *ngFor="let member of members | slice: (page-1) * pageSize : page * pageSize; let i=index; trackBy: trackByData">
-        <td>{{ i+1 }}</td>
+        <td>{{member.id}}</td>
         <td>{{member.firstname}}</td>
         <td>{{member.lastname}}</td>
         <td>{{member.birthday | date:'shortDate'}}</td>
         <td>{{member.geschlecht}}</td>
-        <td>{{member.wunschtermin}}</td>
+        <td>{{member.wunschtermin | date:'shortDate'}}</td>
         <td>{{member.geschwisterkind}}</td>
         <td>{{member.parentFirstName}}</td>
         <td>{{member.parentLastName}}</td>

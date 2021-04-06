@@ -26,8 +26,8 @@ export class FormComponent implements OnInit {
         lastNameControl: ['', Validators.required],
         birthdayControl: ['', Validators.required],
         geschlechtControl: ['', Validators.required],
-        geschwisterkindControl: ['', Validators.required],
         wunschterminControl: ['', Validators.required],
+        geschwisterkindControl: ['', Validators.required],
         parentFirstNameControl: ['', Validators.required],
         parentLastNameControl: ['', Validators.required],
         adresControl: ['', Validators.required],
@@ -53,6 +53,7 @@ export class FormComponent implements OnInit {
       birthdayControl: this.member?.birthday,
       geschlechtCrontrol: this.member?.geschlecht,
       wunschterminControl: this.member?.wunschtermin,
+      geschwisterkindControl: this.member?.geschwisterkind,
       parentFirstNameControl: this.member?.parentFirstName,
       parentLastNameControl: this.member?.parentLastName,
       adresControl: this.member?.adres,
@@ -70,11 +71,7 @@ export class FormComponent implements OnInit {
       error => this.error = error,
     );
   }
-  update(data: Member): void {
-    this.mS.update(data.id, data);
-    console.log('upgedatet: ' + data);
-    this.router.navigate(['/read']);
-  }
+
   onSubmit(): void {
     const values = this.form.value;
     this.member.id = values.idControl,
@@ -83,6 +80,7 @@ export class FormComponent implements OnInit {
     this.member.birthday = values.birthdayControl,
     this.member.geschlecht = values.geschlechtControl,
     this.member.wunschtermin = values.wunschterminControl,
+    this.member.geschwisterkind = values.geschwisterkindControl,
     this.member.parentFirstName = values.parentFirstNameControl,
     this.member.parentLastName = values.parentLastNameControl,
     this.member.adres = values.adresControl,
@@ -91,7 +89,9 @@ export class FormComponent implements OnInit {
     this.member.ort = values.ortControl,
     this.member.telefon = values.telefonControl,
     this.member.email = values.emailControl;
-    this.update(this.member);
+    this.mS.update(this.member.id, this.member);
+    console.log('upgedatet: ' + this.member);
+    this.router.navigate(['/read']);
   }
 
   cancel(): void {

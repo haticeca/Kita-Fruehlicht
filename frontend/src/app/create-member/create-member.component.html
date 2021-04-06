@@ -1,5 +1,6 @@
 <div class="container">
   <form class="row g-3" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p>Bitte füllen Sie das untenstehende Formular vollständig aus.</p>
     <div class="form-group row col-12">
       <label for="firstname" class="form-label">Name des Kindes<span style="color:darkred">*</span></label>
       <input type="text" class="form-control" id="firstname" formControlName="firstNameControl" placeholder="Vorname" aria-label="Vorname">
@@ -50,14 +51,22 @@
     <div class="form-group col-6">
       <input type="text" class="form-control" id="ort" formControlName="ortControl" placeholder="Ort">
     </div>
-    <div class="form-group row col-md-6">
+    <div class="form-group row col-6">
       <input type="text" class="form-control" id="email" formControlName="emailControl" placeholder="name@example.com">
     </div>
-    <div class="form-group col-md-6">
+    <div class="form-group col-6">
       <input type="text" class="form-control" id="telefon" formControlName="telefonControl" placeholder="Telefon/Mobil">
     </div>
     <div class="form-group row col-12">
-      <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Für Warteliste anmelden</button>
+      <div class="col-12">
+       <button type="submit" class="btn btn-primary btn-block" [disabled]="!form.valid">Für Warteliste anmelden</button>
+      </div>
     </div>
   </form>
+  <div class="row">
+    <div *ngIf="alert" class="alert alert-success alert-dismissible fade show col" role="alert">
+      <p>Ihr Formular wurde erfolgreich abgeschickt. Danke für ihr Interesse an unserer Einrichtung!</p>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+  </div>
 </div>

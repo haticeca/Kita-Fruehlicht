@@ -5,7 +5,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReadComponent } from './members/read/read.component';
-import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
+import {
+  circle, download, emojiLaughing,
+  emojiSmile,
+  emojiWink, fileEarmarkCheck,
+  NgxBootstrapIconsModule,
+  person,
+  personCircle,
+  search
+} from 'ngx-bootstrap-icons';
 import { pencilSquare } from 'ngx-bootstrap-icons';
 import { trash } from 'ngx-bootstrap-icons';
 import { FormComponent } from './members/read/form/form.component';
@@ -19,10 +27,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { KontaktComponent } from './kontakt/kontakt.component';
 import { HomeComponent } from './home/home.component';
+import { KonzepteComponent } from './konzepte/konzepte.component';
 
 const icons = {
   pencilSquare,
   trash,
+  personCircle,
+  search,
+  emojiWink,
+  emojiSmile,
+  emojiLaughing,
+  download,
+  fileEarmarkCheck
 };
 
 @NgModule({
@@ -36,7 +52,8 @@ const icons = {
     RegisterMemberComponent,
     ImpressumComponent,
     KontaktComponent,
-    HomeComponent
+    HomeComponent,
+    KonzepteComponent
   ],
     imports: [
         BrowserModule,
