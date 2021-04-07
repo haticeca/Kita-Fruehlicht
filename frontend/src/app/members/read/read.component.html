@@ -1,5 +1,5 @@
 <div class="container d-flex flex-column sticky-footer-wrapper min-vh-100 m-5">
-  <div class="table-responsive" *ngIf="selectedId == 0">
+  <div class="table-responsive" *ngIf="selectedId == 0" id="htmlData">
     <h2>Bearbeitung der Online-Warteliste</h2>
     <table class="table table-hover table-sm">
       <caption>Warteliste</caption>
@@ -59,7 +59,10 @@
       </tbody>
     </table>
   </div>
-  <ngb-pagination class="d-flex justify-content-end"
+  <div class="row col-md-4 text-right">
+    <button class="btn btn-primary btn-block" (click)="openPDF()">Download Warteliste</button>
+  </div>
+  <ngb-pagination style="color: #61CE70" class="d-flex justify-content-end"
                   [(page)]="page"
                   [pageSize]="pageSize"
                   [collectionSize]="members.length">

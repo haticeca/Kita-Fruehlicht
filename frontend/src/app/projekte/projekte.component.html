@@ -1,0 +1,18 @@
+<div class="container d-flex flex-column sticky-footer-wrapper min-vh-100 m-5">
+  <h2>Unsere aktuellen Projekte</h2>
+  <div class="row">
+   <div class="col-md-4 pb-4" *ngFor="let projekt of projekte">
+    <div class="card" style="width: 18rem; heigh: 18rem;" >
+      <img class="card-img-top" src="{{projekt.imgUrl}}" alt="Card image cap" weight="50" heigh="50">
+      <div class="card-body">
+        <h5 class="card-title">{{projekt.titel}}</h5>
+        <p class="card-text">{{projekt.beschreibung}}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Wo? {{ projekt.ort}}</li>
+        <li class="list-group-item">Wann? {{projekt.datum | date:'shortDate'}}</li>
+      </ul>
+    </div>
+   </div>
+  </div>
+</div>

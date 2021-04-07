@@ -3,10 +3,18 @@
   border-color: transparent;
 }
 .btn-primary {
-  background-color: #EFBD19;
-  border-color: #EFBD19
+  background-color: transparent;
+  border-color: white;
 }
-i{
-  color: #f4eddd;
+.btn-primary:hover {
+  background-color: white;
+  border-color: white;
+  color: #EFBD19;
+}
+.btn-outline-primary{
+  color: white;
 }
 /* #f4eddd */
+.cards{
+  background-color: #EFBD19;
+}

@@ -28,6 +28,7 @@ import { ImpressumComponent } from './impressum/impressum.component';
 import { KontaktComponent } from './kontakt/kontakt.component';
 import { HomeComponent } from './home/home.component';
 import { KonzepteComponent } from './konzepte/konzepte.component';
+import { ProjekteComponent } from './projekte/projekte.component';
 
 const icons = {
   pencilSquare,
@@ -53,7 +54,8 @@ const icons = {
     ImpressumComponent,
     KontaktComponent,
     HomeComponent,
-    KonzepteComponent
+    KonzepteComponent,
+    ProjekteComponent
   ],
     imports: [
         BrowserModule,

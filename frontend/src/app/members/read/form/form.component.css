@@ -2,3 +2,8 @@
   background-color: #61CE70;
   border-color:  #61CE70;
 }
+.btn-primary:hover {
+  background-color: white;
+  border-color: white;
+  color: #EFBD19;
+}

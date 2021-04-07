@@ -1,4 +1,4 @@
-const Projekt = require("../model/Projekts.model.js");
+const Projekt = require("../model/projekte.model.js");
 
 // Create and Save a new Projekt
 exports.create = (req, res) => {

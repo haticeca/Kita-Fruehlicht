@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Member} from "../../shared/Member";
 import {MemberService} from "../../shared/member.service";
 import {ActivatedRoute} from '@angular/router';
 import {HttpErrorResponse} from "@angular/common/http";
 import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-read',
@@ -12,6 +14,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./read.component.css']
 })
 export class ReadComponent implements OnInit {
+  @ViewChild('htmlData') htmlData: ElementRef;
+
   members: Member[];
   member: Member;
   selectedId: number;
@@ -30,7 +34,7 @@ export class ReadComponent implements OnInit {
     // Konfiguration des modalen Dialogs
     config.backdrop = 'static';   // schliesst nicht, wenn man in das Fenster dahinter klickt
     config.keyboard = false;      // Modaler Dialog kann nicht durch ESC beendet werden
-    // Formular fuer delete
+    // Formular fuer deconste
     this.form = this.fb.group(
       {
         idControl: ['', Validators.required],
@@ -73,7 +77,7 @@ export class ReadComponent implements OnInit {
       error => this.error = error,
     );
   }
-  deleteOne(id: number): void {
+  deconsteOne(id: number): void {
     this.cs.deleteOne(id);
     window.location.reload();
   }
@@ -83,10 +87,26 @@ export class ReadComponent implements OnInit {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
       console.log(this.closeResult);
-      if (result === 'delete')
+      if (result === 'deconste')
       {
-        this.deleteOne(this.member?.id);
+        this.deconsteOne(this.member?.id);
       }
+    });
+  }
+  public openPDF(): void {
+    const DATA = document.getElementById('htmlData');
+
+    html2canvas(DATA).then(canvas => {
+
+      const fileWidth = 208;
+      const fileHeight = canvas.height * fileWidth / canvas.width;
+
+      const FILEURI = canvas.toDataURL('image/png');
+      const PDF = new jsPDF('p', 'mm', 'a4');
+      const position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+
+      PDF.save('kita_fuehlicht_warteliste.pdf');
     });
   }
 }
