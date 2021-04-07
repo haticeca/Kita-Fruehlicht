@@ -1,6 +1,6 @@
 # Kita-Fruehlicht
 
-Diese Webseite dient für die Online-Präsentation einer Kita. 
+Diese Webseite dient als Online-Präsentation einer Kita. 
 Da ursprünglich ein Login geplant war (zeitlich nicht mehr geschafft) ist die Webseite aus Sicht eines Admins zu sehen. 
 Im Menü sind Konzepte, Anmeldung und Projekte, die zu weiteren Links führen. Die Icons rechts "Login" und "Suche" sind erstmal zur Veranschaulichung da.
 Unter Anmeldung sieht man die 3 Schritte für eine erfolgreiche Aufnahme in der Kita. Unter Schritt eins kann man sich online in die Warteliste eintragen(create).
