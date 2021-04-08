@@ -10,6 +10,7 @@ import {ProjekteComponent} from "./projekte/projekte.component";
 
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
   { path: 'form/:id', component: FormComponent },
   { path: 'read', component: ReadComponent },
   { path: 'read/:id', component: ReadComponent },
